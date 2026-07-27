@@ -59,15 +59,15 @@ The skill treats Neto CMS records as content, pages, category pages, or categori
 - page/category heading -> `SEOPageHeading`
 - page/category title -> `SEOPageTitle`
 - content/page/category name -> `ContentName`
-- content/page/category URL -> `ContentURL`
+- content/page/category URL -> `ContentURL` for returned data or updates, not lookup
 
 Example:
 
 ```text
-Use $neto-ecommerce-api to find the category with ContentURL /gift-ideas/ and update its category description with the following HTML: <p>...</p>
+Use $neto-ecommerce-api to find the category named Gift Ideas and update its category description with the following HTML: <p>...</p>
 ```
 
-The skill resolves the target by `ContentID`, exact URL, or exact name and will not update when multiple records match.
+The skill resolves the target by `ContentID` or exact name and will not update when multiple records match. `ContentURL` is not a documented `GetContent` filter, so a URL alone cannot be used for lookup.
 
 ## Included resources
 

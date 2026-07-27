@@ -70,14 +70,15 @@ Translate common user wording to Neto fields as follows:
 
 When the user says, for example, "update the category description", interpret that as an `UpdateContent` operation changing `Description1`.
 
+`ContentURL` can be returned by `GetContent` and changed by `AddContent` or `UpdateContent`, but it is not a documented `GetContent` filter. Do not use it to resolve a target record.
+
 Before updating, identify the intended record using this preference order:
 
 1. Explicit `ContentID`.
-2. Exact `ContentURL`.
-3. Exact `ContentName`.
-4. Repository or conversation context that unambiguously resolves one record.
+2. Exact `ContentName`.
+3. Repository or conversation context that unambiguously resolves one record.
 
-If a lookup returns multiple plausible records, do not mutate any of them. Report the matches and require the target to be disambiguated. Once identified, send only `ContentID` and the mapped field or fields in the `UpdateContent` payload.
+If the user supplies only a `ContentURL`, request the `ContentID` or exact `ContentName` instead of attempting a URL lookup. If a supported lookup returns multiple plausible records, do not mutate any of them. Report the matches and require the target to be disambiguated. Once identified, send only `ContentID` and the mapped field or fields in the `UpdateContent` payload.
 
 ## Payload rules
 

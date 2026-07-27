@@ -14,13 +14,13 @@ Use these mappings when translating a user's wording into a Neto content payload
 | page heading, content heading, category heading, SEO heading | `SEOPageHeading` | Visible SEO/page heading field. |
 | page title, content title, category title, SEO title | `SEOPageTitle` | SEO/browser page title field. |
 | content name, page name, category name | `ContentName` | The record's Neto content name. |
-| content URL, page URL, category URL | `ContentURL` | Use for exact lookup when the URL is known. |
+| content URL, page URL, category URL | `ContentURL` | Return or update field; not a documented `GetContent` filter. |
 
 A request to update a "category" in this context normally uses the Content actions. This is separate from assigning a product to categories through product fields such as `Categories`.
 
 ### Target-resolution rule
 
-Resolve the target in this order: explicit `ContentID`, exact `ContentURL`, exact `ContentName`, then unambiguous repository or conversation context. If more than one plausible content record is found, stop before mutation and surface the matches.
+Resolve the target in this order: explicit `ContentID`, exact `ContentName`, then unambiguous repository or conversation context. If only a `ContentURL` is supplied, request the `ContentID` or exact `ContentName`; do not attempt a URL lookup. If more than one plausible content record is found, stop before mutation and surface the matches.
 
 ## Action summary
 
