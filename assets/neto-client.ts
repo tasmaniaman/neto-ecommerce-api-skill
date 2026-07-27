@@ -62,10 +62,13 @@ function asArray<T>(value: T | T[] | null | undefined): T[] {
 }
 
 function buildEndpoint(storeUrl: string): string {
-  const url = new URL(storeUrl.includes("://") ? storeUrl : `https://${storeUrl}`);
+  const inputUrl = new URL(storeUrl.includes("://") ? storeUrl : `https://${storeUrl}`);
+  if (!inputUrl.host) {
+    throw new TypeError("Neto store URL must include a host");
+  }
+
+  const url = new URL(`https://${inputUrl.host}`);
   url.pathname = "/do/WS/NetoAPI";
-  url.search = "";
-  url.hash = "";
   return url.toString();
 }
 
