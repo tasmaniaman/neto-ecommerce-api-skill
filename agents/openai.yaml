@@ -1,0 +1,5 @@
+interface:
+  display_name: "Neto Ecommerce API"
+  short_description: "Products, content, and category-page API guidance"
+  brand_color: "#243746"
+  default_prompt: "Use $neto-ecommerce-api to implement or review this Neto Products, Content, or category-page API task."
